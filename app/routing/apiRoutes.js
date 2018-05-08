@@ -7,6 +7,10 @@ module.exports = function (app) {
     })
 
     app.post("/api/friends", function (req, res) {
+        var newfriend = req.body
+        friends.push(newfriend);
+        res.json(newfriend);
+
         var newfriendscore = req.body.scores;
 
         var bestMatch = {
@@ -16,7 +20,7 @@ module.exports = function (app) {
         }
 
         // loop through all the friends database. 
-        for (var i = 0; i < friends.length; i++) {
+        for (var i = 0; i < friends.length-1; i++) {
             var friendScores = friends[i].scores
             var scoreDifference = 0;
 
